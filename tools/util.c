@@ -44,6 +44,8 @@
 #define ARCH_NATIVE		AUDIT_ARCH_ARM
 #elif __aarch64__
 #define ARCH_NATIVE		AUDIT_ARCH_AARCH64
+#elif __m68k__
+#define ARCH_NATIVE		AUDIT_ARCH_M68K
 #elif __mips__ && _MIPS_SIM == _MIPS_SIM_ABI32
 #if __MIPSEB__
 #define ARCH_NATIVE		AUDIT_ARCH_MIPS

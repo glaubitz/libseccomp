@@ -34,6 +34,7 @@
 #include "arch-x86_64.h"
 #include "arch-x32.h"
 #include "arch-arm.h"
+#include "arch-m68k.h"
 #include "arch-mips.h"
 #include "arch-mips64.h"
 #include "arch-mips64n32.h"
@@ -105,6 +106,9 @@ int main(int argc, char *argv[])
 			break;
 		case SCMP_ARCH_AARCH64:
 			sys = aarch64_syscall_iterate(iter);
+			break;
+		case SCMP_ARCH_M68K:
+			sys = m68k_syscall_iterate(iter);
 			break;
 		case SCMP_ARCH_MIPS:
 		case SCMP_ARCH_MIPSEL:

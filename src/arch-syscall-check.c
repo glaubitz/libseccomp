@@ -30,6 +30,7 @@
 #include "arch-x32.h"
 #include "arch-arm.h"
 #include "arch-aarch64.h"
+#include "arch-m68k.h"
 #include "arch-mips.h"
 #include "arch-mips64.h"
 #include "arch-mips64n32.h"
@@ -69,6 +70,7 @@ int main(int argc, char *argv[])
 	int i_x32 = 0;
 	int i_arm = 0;
 	int i_aarch64 = 0;
+	int i_m68k = 0;
 	int i_mips = 0;
 	int i_mips64 = 0;
 	int i_mips64n32 = 0;
@@ -99,6 +101,8 @@ int main(int argc, char *argv[])
 			      arm_syscall_iterate(i_arm));
 		syscall_check(str_miss, sys_name, "aarch64",
 			      aarch64_syscall_iterate(i_aarch64));
+		syscall_check(str_miss, sys_name, "m68k",
+			      m68k_syscall_iterate(i_m68k));
 		syscall_check(str_miss, sys_name, "mips",
 			      mips_syscall_iterate(i_mips));
 		syscall_check(str_miss, sys_name, "mips64",
@@ -135,6 +139,8 @@ int main(int argc, char *argv[])
 			i_arm = -1;
 		if (!aarch64_syscall_iterate(++i_aarch64)->name)
 			i_aarch64 = -1;
+		if (!m68k_syscall_iterate(++i_m68k)->name)
+			i_m68k = -1;
 		if (!mips_syscall_iterate(++i_mips)->name)
 			i_mips = -1;
 		if (!mips64_syscall_iterate(++i_mips64)->name)
@@ -152,7 +158,7 @@ int main(int argc, char *argv[])
 		if (!s390x_syscall_iterate(++i_s390x)->name)
 			i_s390x = -1;
 	} while (i_x86_64 >= 0 && i_x32 >= 0 &&
-		 i_arm >= 0 && i_aarch64 >= 0 &&
+		 i_arm >= 0 && i_aarch64 >= 0 && i_m68k >= 0 &&
 		 i_mips >= 0 && i_mips64 >= 0 && i_mips64n32 >= 0 &&
 		 i_parisc >= 0 &&
 		 i_ppc >= 0 && i_ppc64 >= 0 &&
@@ -178,6 +184,10 @@ int main(int argc, char *argv[])
 	}
 	if (i_aarch64 >= 0) {
 		printf("ERROR, aarch64 has additional syscalls\n");
+		return 1;
+	}
+	if (i_m68k >= 0) {
+		printf("ERROR, m68k has additional syscalls\n");
 		return 1;
 	}
 	if (i_mips >= 0) {

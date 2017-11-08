@@ -42,6 +42,7 @@
 ARCH_DEF(x86_64)
 ARCH_DEF(arm)
 ARCH_DEF(aarch64)
+ARCH_DEF(m68k)
 ARCH_DEF(mips64n32)
 ARCH_DEF(mips64)
 ARCH_DEF(mips)

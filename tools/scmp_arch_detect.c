@@ -81,6 +81,9 @@ int main(int argc, char *argv[])
 		case SCMP_ARCH_AARCH64:
 			printf("aarch64\n");
 			break;
+		case SCMP_ARCH_M68K:
+			printf("m68k\n");
+			break;
 		case SCMP_ARCH_MIPS:
 			printf("mips\n");
 			break;

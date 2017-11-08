@@ -151,6 +151,11 @@ struct scmp_arg_cmp {
 #define SCMP_ARCH_AARCH64	AUDIT_ARCH_AARCH64
 
 /**
+ * The M68K architecture tokens
+ */
+#define SCMP_ARCH_M68K		AUDIT_ARCH_M68K
+
+/**
  * The MIPS architecture tokens
  */
 #ifndef __AUDIT_ARCH_CONVENTION_MIPS64_N32
